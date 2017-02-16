@@ -1,0 +1,33 @@
+mainmenu "Main Menu"
+
+comment "This is a comment to help to structure test1  menu"
+
+
+
+menuconfig	TEST1
+	bool "chose test1 or not"
+if TEST1
+	source src/test1/Kconfig
+endif
+
+
+
+
+comment "This item is visible only if the third option is selected"
+
+menuconfig TEST2
+	bool "chose test2 or not"
+if TEST2
+	source src/test2/Kconfig
+
+endif
+
+
+
+menu "Subconfmenu"
+	visible if TEST2
+	source src/Kconfig
+	menu "Nested 1"
+		comment "we can nest as deep as we want"
+	endmenu
+endmenu
